@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS theplug_db;
+CREATE DATABASE theplug_db;
