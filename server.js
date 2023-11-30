@@ -39,6 +39,13 @@ app.get('/create-event', function (req, res) {
   res.render('eventForm');
 });
 
+// this will handle the form submission
+
+app.post('/create-event', function (req, res) {
+  // Here you can handle the form submission.
+  // The form data will be available in req.body
+});
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
