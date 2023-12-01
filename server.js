@@ -49,9 +49,10 @@ app.post('/create-event', [
 ], function (req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    // There were validation errors
-    // You can send the errors to the client, re-render the form with the errors and form data, etc.
-    return res.status(400).json({ errors: errors.array() });
+    return res.render('eventForm', { 
+      errors: errors.array(),
+      formData: req.body
+    });
   }
 
   // If there were no validation errors, continue with handling the form submission
