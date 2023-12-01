@@ -43,13 +43,18 @@ app.get('/create-event', function (req, res) {
 // this will handle the form submission
 
 app.post('/create-event', [
-  // Check if 'name' is not empty
+  // Validation checks
   check('name').not().isEmpty().withMessage('Name is required'),
-  // Check if 'date' is a valid date
   check('date').isDate().withMessage('Date is not valid'),
-  // Add more checks as needed
 ], function (req, res) {
-  // Handle the form submission
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // There were validation errors
+    // You can send the errors to the client, re-render the form with the errors and form data, etc.
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  // If there were no validation errors, continue with handling the form submission
 });
 app.use(routes);
 
