@@ -1,20 +1,21 @@
 const router = require("express").Router();
-const { Events } = require("../../models");
+const { Event } = require("../../models");
 
 //Get all events
 router.get("/", async (req, res) => {
   try {
-    const eventsData = await Events.findAll();
+    const eventsData = await Event.findAll();
     res.status(200).json(eventsData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
 
 //Get events by id
-router.get("/:id", async (req, res) => {
+router.get("event-by-id/:id", async (req, res) => {
   try {
-    const eventsData = await Events.findByPk(req.params.id);
+    const eventsData = await Event.findByPk(req.params.id);
     if (!eventsData) {
       res.status(404).json({ message: "No Event Found" });
       return;
@@ -26,6 +27,16 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+//Get all events by user
+router.get("/user-events", async (req, res) => {
+  try {
+    const userData = req.session.user_id;
+    const allEvents = await Event.findAll({ where: { created_by: userData } });
+    res.status(200).json(allEvents);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 //Create event
 router.post("/", async (req, res) => {
   try {
@@ -42,7 +53,7 @@ router.post("/", async (req, res) => {
       res.status(404).json({ message: "User not found" });
       return;
     }
-    const eventsData = await Events.create({
+    const eventsData = await Event.create({
       event_name: req.body.event_name,
       event_start: req.body.event_start,
       event_end: req.body.event_end,
@@ -59,7 +70,7 @@ router.post("/", async (req, res) => {
 //Delete event
 router.delete("/:id", async (req, res) => {
   try {
-    const eventData = await Events.destroy({
+    const eventData = await Event.destroy({
       where: {
         id: req.params.id,
       },

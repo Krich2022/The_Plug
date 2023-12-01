@@ -15,7 +15,7 @@ EventUser.init(
     },
   },
   {
-    sequelize, // Pass the Sequelize instance as an option here
+    sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
