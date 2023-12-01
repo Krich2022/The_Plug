@@ -4,6 +4,7 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const { check, validationResult } = require('express-validator');
 
 const sequelize = require("./config/connection");
 
@@ -41,11 +42,15 @@ app.get('/create-event', function (req, res) {
 
 // this will handle the form submission
 
-app.post('/create-event', function (req, res) {
-  // Here you can handle the form submission.
-  // The form data will be available in req.body
+app.post('/create-event', [
+  // Check if 'name' is not empty
+  check('name').not().isEmpty().withMessage('Name is required'),
+  // Check if 'date' is a valid date
+  check('date').isDate().withMessage('Date is not valid'),
+  // Add more checks as needed
+], function (req, res) {
+  // Handle the form submission
 });
-
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
