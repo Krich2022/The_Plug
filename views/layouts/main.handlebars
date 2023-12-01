@@ -3,24 +3,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Plug</title>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 
-  <body>
-    <header>
-        <h1>The Plug</h1>
-        <div>
-            <button>Dashboard</button>
-            <button>Search</button>
-        </div>
+  <body class="full-background">
+    <header class="p-6 static flex text-xl">
+      <h1 class="flex-1 text-4xl">The Plug</h1>
+      <div class="flex">
+        <p class="flex-1 ml-5 my-2">Dashboard</p>
+        <p class="flex-1 ml-5 my-2">Search</p>
       {{#if logged_in}}
-        <nav>
-          <button>Logout</button>
-        </nav>
+        <p class="flex-1 ml-5 my-2">Logout</p>
       {{else}}
-        <button>Login</button>
+        <p class="flex-1 ml-5 my-2">Login</p>
       {{/if}}
+      </div>
     </header>
     <main>
       {{{body}}}
