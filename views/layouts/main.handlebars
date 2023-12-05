@@ -12,15 +12,15 @@
   </head>
 
   <body class="full-background">
-    <header class="p-6 static flex text-xl">
+    <header class="p-6 static flex text-xl bg-blue-500 text-white">
       <h1 class="flex-1 text-4xl cursor-default">The Plug</h1>
       <div class="flex">
-        <p class="flex-1 ml-5 my-2 cursor-pointer">Dashboard</p>
-        <p class="flex-1 ml-5 my-2 cursor-pointer">Search</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer" id="dashboard">Dashboard</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer" id="search">Search</p>
       {{#if logged_in}}
-        <p class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
+        <p id="logout" class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
       {{else}}
-        <p class="flex-1 ml-5 my-2 cursor-pointer">Login</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer" id="login">Login</p>
       {{/if}}
       </div>
     </header>
@@ -31,5 +31,6 @@
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
+    <script src="/js/header.js"></script>
   </body>
 </html>
