@@ -39,9 +39,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get('/create-event', function (req, res) {
   res.render('eventForm');
 });
-
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+// // this can be used to upload files
+// const multer = require('multer');
+// const upload = multer({ dest: 'uploads/' });
 
 
 // this will handle the form submission
