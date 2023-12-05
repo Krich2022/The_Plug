@@ -13,14 +13,14 @@
 
   <body class="full-background">
     <header class="p-6 static flex text-xl">
-      <h1 class="flex-1 text-4xl">The Plug</h1>
+      <h1 class="flex-1 text-4xl cursor-default">The Plug</h1>
       <div class="flex">
-        <p class="flex-1 ml-5 my-2">Dashboard</p>
-        <p class="flex-1 ml-5 my-2">Search</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer">Dashboard</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer">Search</p>
       {{#if logged_in}}
-        <p class="flex-1 ml-5 my-2">Logout</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
       {{else}}
-        <p class="flex-1 ml-5 my-2">Login</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer">Login</p>
       {{/if}}
       </div>
     </header>
