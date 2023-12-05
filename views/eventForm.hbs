@@ -5,11 +5,16 @@
     {{/each}}
   </ul>
 {{/if}}
-
+{{!-- This is the input form --}}
 <form action="/create-event" method="post">
   <label for="eventName">Event Name:</label><br>
   <input type="text" id="eventName" name="eventName" value="{{formData.eventName}}"><br>
   <label for="eventDate">Event Date:</label><br>
   <input type="date" id="eventDate" name="eventDate" value="{{formData.eventDate}}"><br>
+
+  <label for="location">Location:</label><br>
+  <input type="text" id="location" name="location" value="{{formData.location}}"><br>
+  <label for="description">Description:</label><br>
+  <textarea id="description" name="description">{{formData.description}}</textarea><br>
   <input type="submit" value="Create Event">
 </form>
