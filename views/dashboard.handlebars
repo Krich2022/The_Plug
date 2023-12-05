@@ -1,0 +1,41 @@
+<body class="bg-white text-blue-500">
+
+    <header class="bg-blue-500 text-white p-4">
+        <div class="flex justify-between items-center">
+            <div>
+                <input type="text" placeholder="Search" class="p-2 border border-gray-300 rounded">
+            </div>
+            <div class="space-x-4">
+                <button class="bg-transparent border-none" onclick="goHome()">Home</button>
+                <button class="bg-transparent border-none" onclick="login()">Login</button>
+                <button class="bg-transparent border-none" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8">
+        <button class="bg-blue-500 text-white p-2 rounded mb-4">Create Event</button>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <div class="bg-gray-200 p-4 rounded cursor-pointer" onclick="viewEvent('Event 1', 'January 1, 2023, 12:00 PM', 'Event created by: John Doe')">
+                <h2>Event 1</h2>
+                <p id="desc">Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>January 1, 2023, 12:00 PM</p>
+                <p id="tag">You created this event</p>
+            </div>
+
+            <div class="bg-gray-200 p-4 rounded cursor-pointer" onclick="viewEvent('Event 2', 'January 2, 2023, 2:00 PM', 'Event RSVP by: Jane Doe')">
+                <h2>Event 2</h2>
+                <p id="desc">Description: Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p>January 2, 2023, 2:00 PM</p>
+                <p id="tag">RSVP to this event</p>
+            </div>
+
+            <div class="bg-gray-200 p-4 rounded cursor-pointer" onclick="viewEvent('Event 3', 'January 3, 2023, 4:00 PM', 'Event created by: Alice Smith')">
+                <h2>Event 3</h2>
+                <p id="desc">Description: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                <p>January 3, 2023, 4:00 PM</p>
+                <p id="tag">You created this event</p>
+            </div>
+        </div>
+    </main>
+</body>
