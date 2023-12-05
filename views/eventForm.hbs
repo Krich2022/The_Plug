@@ -1,7 +1,15 @@
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
 <form action="/create-event" method="post">
   <label for="eventName">Event Name:</label><br>
-  <input type="text" id="eventName" name="eventName"><br>
+  <input type="text" id="eventName" name="eventName" value="{{formData.eventName}}"><br>
   <label for="eventDate">Event Date:</label><br>
-  <input type="date" id="eventDate" name="eventDate"><br>
+  <input type="date" id="eventDate" name="eventDate" value="{{formData.eventDate}}"><br>
   <input type="submit" value="Create Event">
 </form>
