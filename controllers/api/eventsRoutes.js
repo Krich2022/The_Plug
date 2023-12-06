@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 });
 
 //Get events by id
-router.get("event-by-id/:id", async (req, res) => {
+router.get("/event-by-id/:id", async (req, res) => {
   try {
     const eventsData = await Event.findByPk(req.params.id);
     if (!eventsData) {
