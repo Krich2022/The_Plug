@@ -4,7 +4,9 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
-const { check, validationResult } = require('express-validator');
+const Event = require("./models/Event"); // Import your Event model
+
+const { check, validationResult } = require("express-validator");
 
 const sequelize = require("./config/connection");
 
@@ -36,31 +38,36 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // turn on routes for event form
 
-app.get('/create-event', function (req, res) {
-  res.render('eventForm');
+app.get("/create-event", function (req, res) {
+  res.render("eventForm");
 });
 // // this can be used to upload files
 // const multer = require('multer');
 // const upload = multer({ dest: 'uploads/' });
 
-
 // this will handle the form submission
 
-app.post('/create-event', [
-  // Validation checks
-  check('name').not().isEmpty().withMessage('Name is required'),
-  check('date').isDate().withMessage('Date is not valid'),
-], function (req, res) {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.render('eventForm', { 
-      errors: errors.array(),
-      formData: req.body
-    });
-  }
+app.post(
+  "/create-event",
+  [
+    // validation rules
+    check("eventName", "Event Name is required").not().isEmpty(),
+    check("eventDate", "Event Date is not valid").isDate(),
+    check("location", "Location is required").not().isEmpty(),
+    check("description", "Description is required").not().isEmpty(),
+  ],
+  function (req, res) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render("eventForm", {
+        errors: errors.array(),
+        formData: req.body,
+      });
+    }
 
-  // If there were no validation errors, continue with handling the form submission
-});
+    // If there were no validation errors, continue with handling the form submission
+  }
+);
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
