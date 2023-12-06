@@ -1,5 +1,5 @@
 const User = require("./Users");
-const Event = require("./Events");
+const Event = require("./Event");
 const EventUser = require("./EventsUsers");
 
 User.hasOne(Event, {
