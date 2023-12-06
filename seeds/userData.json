@@ -58,5 +58,11 @@
     "email": "user10@example.com",
     "password": "password_user10",
     "name": "Michael Anderson"
+  },
+  {
+    "username": "dev",
+    "email": "dev@dev.com",
+    "password": "asdf",
+    "name": "dev"
   }
 ]
