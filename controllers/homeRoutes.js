@@ -1,16 +1,22 @@
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
+  //if (!req.session.user) {
+  //  res.redirect('/dashboard');
+  //};
   try {
     res.render("login", {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
-  }
+  };
 });
 
 router.get("/signup", async (req, res) => {
+  //if (!req.session.user) {
+  //  res.redirect('/dashboard');
+  //};
   try {
     res.render("signup", {
       logged_in: req.session.logged_in,
