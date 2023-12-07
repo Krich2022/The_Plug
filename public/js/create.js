@@ -1,13 +1,26 @@
-const event = document.getElementById("event");
-const eventdate = document.getElementById("eventdate");
+const eventName = document.getElementById("eventName");
+const eventStart = document.getElementById("eventStart");
+const eventEnd = document.getElementById("eventEnd");
 const eventLocation = document.getElementById("location");
 const description = document.getElementById("description");
 const eventButton = document.getElementById("eventSubmit");
 
-const createEvent = async (event, eventdate, eventLocation, description) => {
+const createEvent = async (
+  event,
+  eventStart,
+  eventEnd,
+  eventLocation,
+  description
+) => {
   const response = await fetch("/api/events", {
     method: "POST",
-    body: JSON.stringify({ event, eventdate, eventLocation, description }),
+    body: JSON.stringify({
+      event_name: event,
+      event_start: eventStart,
+      event_end: eventEnd,
+      event_location: eventLocation,
+      event_descrription: description,
+    }),
     headers: { "Content-Type": "application/json" },
   });
 
@@ -15,14 +28,16 @@ const createEvent = async (event, eventdate, eventLocation, description) => {
     document.location.replace("/dashboard");
   } else {
     alert("Failed to create event");
+    console.log(response);
   }
 };
 
 eventButton.addEventListener("click", (e) => {
   e.preventDefault();
   createEvent(
-    event.value,
-    eventdate.value,
+    eventName.value,
+    eventStart.value,
+    eventEnd.value,
     eventLocation.value,
     description.value
   );
