@@ -4,6 +4,9 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const Event = require("./models/Events"); // Import your Event model
+
+const { check, validationResult } = require("express-validator");
 
 const sequelize = require("./config/connection");
 
@@ -32,6 +35,8 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+// turn on routes for event form
 
 app.use(routes);
 
