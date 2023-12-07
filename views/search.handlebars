@@ -3,15 +3,16 @@
         <input  id="inputField" class="bg-white text-blue"></input>
         <button id="searchButton" class="bg-blue-500 text-white p-2 rounded mb-4">Search</button>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-            {{#each searchEvent}}
+            {{#each searchEvent as |event|}}
             <div class="bg-gray-200 p-4 rounded cursor-pointer" onclick="viewEvent('Event 1', 'January 1, 2023, 12:00 PM', 'Event created by: John Doe')">
-                
-                <h2>{{event_name}}</h2>
-                <p id="desc">{{event_description}} </p>
-                <p id="tag">{{created_by}}</p>
+                <h2>{{event.event_name}}</h2>
+                <p id="desc">{{event.event_desc}} </p>
+                <p id="tag">{{event.created_by}}</p>
             </div>
             {{/each}}
         </div>
     </main>
 </div>
 {{!-- need a href for linking to the event page when the event card is clicked. ask whoever is doing it and how to tell which event (event id or whatever it may be) --}}
+
+<script src="/js/search.js"></script>
