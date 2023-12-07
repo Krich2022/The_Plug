@@ -1,3 +1,6 @@
+const showEvent = (e) => {
+    window.location.href = `/event/${e}`
+}
 const getAllEvent = async () => {
     const event = await fetch("/api/events/user-events", {
       method: "GET",
