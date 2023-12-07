@@ -1,36 +1,41 @@
-function addEventToDashboard(eventName, dateTime, createdBy) {
-    const eventDashboard = document.getElementById('eventDashboard');
-
-    const eventCard = document.createElement('div');
-    eventCard.classList.add('event-card', 'bg-gray-200', 'p-4', 'rounded', 'cursor-pointer');
-    eventCard.innerHTML = `
-        <h2>${event_name}</h2>
-        <p id="desc">${event_desc}</p>
-        <p>${event_start}</p>
-        <p id="tag">${created_by}</p>
-    `;
-
-    eventCard.addEventListener('click', function () {
-        viewEvent(eventName, dateTime, createdBy);
+const getAllEvent = async () => {
+    const event = await fetch(`/api/events/user-events`, {
+      method: "GET",
     });
+    const rsvp = await fetch(`/api/rsvp/rsvp-events`, {
+      method: "GET",
+    });
+    const eventData = await event.json();
+    const rsvpData = await rsvp.json();
+    console.log(eventData);
+    console.log(rsvpData);
 
-    eventDashboard.appendChild(eventCard);
-}
+    for(i=0;i<rsvpData.length;i++){
+        const eventObj = rsvpData[i].event
+        const eventHtml = `<div
+        class="bg-gray-200 p-4 rounded cursor-pointer"
+        onclick="viewEvent('Event 1', 'January 1, 2023, 12:00 PM', 'Event created by: John Doe')"
+      >
+        <h2>${eventObj.event_name}</h2>
+        <p id="desc">${eventObj.event_desc}</p>
+        <p>Start:${eventObj.event_start} End:${eventObj.event_end}</p>
+        <p>Your RSVP event</p>
+      </div>`
+    document.getElementById("eventsContainer").innerHTML += eventHtml
+    }
 
-function openModal(eventName, dateTime, createdBy) {
-    const modalEventName = document.getElementById('modalEventName');
-    const modalDateTime = document.getElementById('modalDateTime');
-    const modalCreatedBy = document.getElementById('modalCreatedBy');
-    modalEventName.textContent = eventName;
-    modalDateTime.textContent = dateTime;
-    modalCreatedBy.textContent = createdBy;
-    const modal = document.getElementById('eventModal');
-    modal.style.display = 'block';
-}
-function closeModal() {
-    const modal = document.getElementById('eventModal');
-    modal.style.display = 'none';
-}
+    for(i=0;i<eventData.length;i++){
+        const eventObj = eventData[i]
+        const eventHtml = `<div
+        class="bg-gray-200 p-4 rounded cursor-pointer"
+        onclick="viewEvent('Event 1', 'January 1, 2023, 12:00 PM', 'Event created by: John Doe')"
+      >
+        <h2>${eventObj.event_name}</h2>
+        <p id="desc">${eventObj.event_desc}</p>
+        <p>Start:${eventObj.event_start} End:${eventObj.event_end}</p>
+        <p>Your event</p>
+      </div>`
+    document.getElementById("eventsContainer").innerHTML += eventHtml
+}};
 
-addEventToDashboard('Event 2', 'January 2, 2023, 2:00 PM', 'Event RSVP by: Jane Doe');
-addEventToDashboard('Event 3', 'January 3, 2023, 4:00 PM', 'Event created by: Alice Smith');
+getAllEvent
