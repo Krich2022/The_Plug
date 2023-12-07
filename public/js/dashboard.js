@@ -19,7 +19,7 @@ const getAllEvent = async () => {
     const [startDate, timeStart] = eventObj.event_start.split("T");
     const eventHtml = `<div
           class="bg-gray-200 p-4 rounded cursor-pointer"
-          onclick="showEvent(${eventData.id})"
+          onclick="showEvent(${eventObj.id})"
         >
           <h2>${eventObj.event_name}</h2>
           <p id="desc">${eventObj.event_desc}</p>
@@ -33,7 +33,7 @@ const getAllEvent = async () => {
     const eventObj = eventData[i];
     const eventHtml = `<div
           class="bg-gray-200 p-4 rounded cursor-pointer"
-          onclick="showEvent(${eventData.id})"
+          onclick="showEvent(${eventObj.id})"
         >
           <h2>${eventObj.event_name}</h2>
           <p id="desc">${eventObj.event_desc}</p>
