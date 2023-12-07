@@ -1,0 +1,58 @@
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{this.msg}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+{{! This is the input form }}
+<form class="bg-gray-100 p-6 rounded-md">
+  <label for="eventName" class="block text-gray-700">Event Name:</label>
+  <input
+    type="text"
+    id="eventName"
+    name="eventName"
+    class="w-full px-3 py-2 mt-1 mb-6 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+    value="{{formData.eventName}}"
+  />
+
+  <label for="eventStart" class="block text-gray-700">Event Start:</label>
+  <input
+    type="date"
+    id="eventStart"
+    name="eventStart"
+    value="{{formData.eventStart}}"
+    class="w-full px-3 py-2 mt-1 mb-6 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+  />
+
+  <label for="eventEnd" class="block text-gray-700">Event End:</label>
+  <input
+    type="date"
+    id="eventEnd"
+    name="eventEnd"
+    value="{{formData.eventEnd}}"
+    class="w-full px-3 py-2 mt-1 mb-6 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+  />
+
+  <label for="location" class="block text-gray-700">Location:</label>
+  <input
+    type="text"
+    id="location"
+    name="location"
+    value="{{formData.location}}"
+    class="w-full px-3 py-2 mt-1 mb-6 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+  />
+
+  <label for="description" class="block text-gray-700">Description:</label>
+  <textarea
+    id="description"
+    name="description"
+    class="w-full px-3 py-2 mt-1 mb-6 border rounded-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+  >{{formData.description}}</textarea>
+
+  <button
+    id="eventSubmit"
+    class="px-4 py-2 bg-blue-200 text-gray-700 rounded-md cursor-pointer hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >Create Event</button>
+
+</form>

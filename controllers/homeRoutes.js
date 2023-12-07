@@ -40,6 +40,7 @@ router.get("/event/*", async (req, res) => {
   try {
     res.render("event", {
       logged_in: req.session.logged_in,
+      eventById: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -56,4 +57,16 @@ router.get("/search", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/create", async (req, res) => {
+  try {
+    res.render("eventform", {
+      logged_in: req.session.logged_in,
+      createEvent: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

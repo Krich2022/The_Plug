@@ -35,6 +35,11 @@
     {{#if search}}
     <script src="/public/js/search.js"></script>
     {{/if}}
-    <script src="/js/event.js"></script>
+    {{#if eventById}}
+      <script src="/js/event.js"></script>
+    {{/if}}
+    {{#if createEvent}}
+      <script src="/js/create.js"></script>
+    {{/if}}
   </body>
 </html>

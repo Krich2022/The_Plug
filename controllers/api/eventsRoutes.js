@@ -57,7 +57,7 @@ router.post("/", async (req, res) => {
       event_name: req.body.event_name,
       event_start: req.body.event_start,
       event_end: req.body.event_end,
-      event_img: req.body.event_img,
+      event_location: req.body.event_location,
       event_desc: req.body.event_desc,
       created_by: userId,
     });
