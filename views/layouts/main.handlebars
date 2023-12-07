@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Plug</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body class="full-background">
+    <header class="p-6 static flex text-xl bg-blue-500 text-white">
+      <h1 class="flex-1 text-4xl cursor-default">The Plug</h1>
+      <div class="flex">
+        <p class="flex-1 ml-5 my-2 cursor-pointer" id="dashboard">Dashboard</p>
+        <p class="flex-1 ml-5 my-2 cursor-pointer" id="search">Search</p>
+        {{#if logged_in}}
+          <p id="logout" class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
+        {{else}}
+          <p class="flex-1 ml-5 my-2 cursor-pointer" id="login">Login</p>
+        {{/if}}
+      </div>
+    </header>
+    <main>
+      {{{body}}}
+
+    </main>
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+    <script src="/js/header.js"></script>
+
+    <script src="/js/event.js"></script>
+  </body>
+</html>

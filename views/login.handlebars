@@ -1,0 +1,31 @@
+<section class="mt-10 flex m-auto relative max-w-lg max-h-9" style="width: fit-content;">
+    <div class="flex flex-col items-center justify-center h-screen text-blue boxbg p-16 rounded-corners" style="height: fit-content;">
+        <h2 class="m-4 text-xl cursor-default">Login to Your Account</h2>
+
+        <form id="loginForm" class="m-2 text-base">
+            <div id="loginError" class="text-red-700 hidden">
+                <span>Username or Password are incorrect</span>
+            </div>
+            <div class="m-2">
+                <label for "username">Username:</label>
+            </div>
+            <div>
+                <input id="usernameLogin" type="text" class="text-black"/>
+            </div>
+            <div class="m-2">
+                <label for "password">Password:</label>
+            </div>
+            <div>
+                <input id="passwordLogin" type="password" class="text-black"/>
+            </div>
+            <div class="m-2">
+                <button id="loginBtn">Login</button>
+            </div>
+        </form>
+        <div>
+            <p class="m-2 mt-6 cursor-default">Need an account?</p> <button id="signUp" class="m-2">Sign up</button>
+        </div>
+     </div>
+</section>
+
+<script src="./js/login.js"></script>
