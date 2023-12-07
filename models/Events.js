@@ -23,7 +23,7 @@ Event.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    event_img: {
+    event_location: {
       type: DataTypes.STRING,
       allowNull: false,
     },
