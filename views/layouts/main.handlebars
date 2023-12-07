@@ -32,7 +32,17 @@
       <script src="/js/logout.js"></script>
     {{/if}}
     <script src="/js/header.js"></script>
-
-    <script src="/js/event.js"></script>
+    {{#if search}}
+      <script src="/js/search.js"></script>
+    {{/if}}
+    {{#if eventById}}
+      <script src="/js/event.js"></script>
+    {{/if}}
+    {{#if createEvent}}
+      <script src="/js/create.js"></script>
+    {{/if}}
+    {{#if dashboard}}
+      <script src="/js/dashboard.js"></script>
+    {{/if}}
   </body>
 </html>
