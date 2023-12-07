@@ -5,7 +5,6 @@ const search= require ("../models/Events.js");
 const {Op}= require("sequilize");
 var searchVar= document.getElementById('searchButton');
 var inputVar= document.getElementById('inputField');
-var filterVar= document.getElementById('filterButton')
 
 searchVar.addEventListener("click", searchClick);
 
