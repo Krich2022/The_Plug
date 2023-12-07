@@ -7,20 +7,22 @@
     style="height: fit-content;"
   >
     <!--Input event title here-->
-    <h2 id="title" class="text-6xl text-black">Event Title</h2>
+    <h2 id="title" class="text-6xl text-black">{{event_name}}</h2>
 
     <!--Date and Time here-->
     <div id="date&Time" class="m-2 text-2xl text-black text-left">
-      <h3>Date and time</h3>
+      <h3>{{event_start}} to {{event_end}}</h3>
     </div>
     <!--Event Description here-->
     <div id="description" class="boxbg rounded-corners m-2 p-10 object-fill">
-      <p>Event Description Here</p>
+      <p>{{event_desc}}</p>
     </div>
     <!--RSVP list here-->
     <div id="rsvp" class="boxbg rounded-corners m-2 p-10">
       <p>Input RSVP's here</p>
     </div>
+    <div id="eventCreator" class="text-black m-2 p-10">
+      <p>Created by {{created_by}}</p>
+    </div>
   </div>
 </section>
-</script>
