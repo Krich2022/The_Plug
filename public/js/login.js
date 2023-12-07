@@ -45,20 +45,20 @@ const signupFormHandler = async (event) => {
   }
 };
 
-const login = document.getElementById("loginBtn");
-const signUp = document.getElementById("signUpBtn");
+const loginBtn = document.getElementById("loginBtn");
+const signUpBtn = document.getElementById("signUpBtn");
 
-if (login) {
+if (loginBtn) {
   const signUpPage = document.getElementById("signUp");
-  login.addEventListener("click", loginFormHandler);
+  loginBtn.addEventListener("click", loginFormHandler);
   signUpPage.addEventListener("click", () => {
     document.location.replace("/signup");
   });
-}
-if (signUp) {
-  const loginPage = document.getElementById("login");
-  signUp.addEventListener("click", signupFormHandler);
+};
+if (signUpBtn) {
+  const loginPage = document.getElementById("loginHere");
+  signUpBtn.addEventListener("click", signupFormHandler);
   loginPage.addEventListener("click", () => {
     document.location.replace("/");
   });
-}
+};

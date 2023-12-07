@@ -5,11 +5,10 @@ const login = document.getElementById("login");
 dashboard.addEventListener("click", () => {
   document.location.replace("/dashboard");
 });
-if (login) {
-  login.addEventListener("click", () => {
+
+login.addEventListener("click", () => {
     document.location.replace("/");
   });
-}
 
 search.addEventListener("click", () => {
   document.location.replace("/search");
