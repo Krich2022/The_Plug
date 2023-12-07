@@ -11,9 +11,12 @@ const getEvent = async () => {
   const rsvpData = await rsvp.json();
   const currentUserId = sessionStorage.getItem("user_id");
   if (eventData.created_by === currentUserId) {
+    document.getElementById(
+      "emailContainer"
+    ).innerHTML = `<button id="emailRsvp">Email RSVP</button>`;
+    const submitEmail = document.getElementById("emailRSVP");
+    submitEmail.addEventListener("click", emailUsers);
   }
-  // console.log(eventData);
-  console.log(rsvpData);
 
   const [endDate, timeEnd] = eventData.event_end.split("T");
   const [startDate, timeStart] = eventData.event_start.split("T");
@@ -29,4 +32,11 @@ const getEvent = async () => {
   }
   document.getElementById("rsvp").textContent = eventUsers.join(", ");
 };
+
+const emailUsers = async () => {
+  const rsvp = await fetch(`/api/rsvp/users-by-event-id/${eventId}`, {
+    method: "GET",
+  });
+};
+
 getEvent();
