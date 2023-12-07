@@ -19,7 +19,7 @@ const createEvent = async (
       event_start: eventStart,
       event_end: eventEnd,
       event_location: eventLocation,
-      event_descrription: description,
+      event_desc: description,
     }),
     headers: { "Content-Type": "application/json" },
   });
@@ -34,10 +34,13 @@ const createEvent = async (
 
 eventButton.addEventListener("click", (e) => {
   e.preventDefault();
+  const eventStartValue = new Date(eventStart.value);
+  const eventEndValue = new Date(eventEnd.value);
+  console.log(eventStartValue);
   createEvent(
     eventName.value,
-    eventStart.value,
-    eventEnd.value,
+    eventStartValue,
+    eventEndValue,
     eventLocation.value,
     description.value
   );

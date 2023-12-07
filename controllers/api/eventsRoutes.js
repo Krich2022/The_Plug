@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Event } = require("../../models");
+const { Event, User } = require("../../models");
 
 //Get all events
 router.get("/", async (req, res) => {
@@ -38,8 +38,11 @@ router.get("/user-events", async (req, res) => {
   }
 });
 //Create event
+
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body);
+
     if (!req.session.logged_in) {
       res.status(401).json({ message: "Unauthorized: User not logged in" });
       return;
@@ -63,6 +66,7 @@ router.post("/", async (req, res) => {
     });
     res.status(200).json(eventsData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
