@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
-  };
+  }
 });
 
 router.get("/signup", async (req, res) => {
@@ -30,6 +30,7 @@ router.get("/dashboard", async (req, res) => {
   try {
     res.render("dashboard", {
       logged_in: req.session.logged_in,
+      dashboard: true,
     });
   } catch (err) {
     res.status(500).json(err);
