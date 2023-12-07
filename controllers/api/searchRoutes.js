@@ -18,8 +18,7 @@ router.get("/:search", async (req, res) => {
     }).then(eventsData => {
         const events = eventsData.map((eventsData) => eventsData.get({ plain: true }));
         console.log(eventsData, "Search result",events)
-       // res.status(200).json(eventsData);
-        res.render("search",{searchEvent:events})
+       res.status(200).json(events); 
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);
