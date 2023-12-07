@@ -17,11 +17,11 @@
       <div class="flex">
         <p class="flex-1 ml-5 my-2 cursor-pointer" id="dashboard">Dashboard</p>
         <p class="flex-1 ml-5 my-2 cursor-pointer" id="search">Search</p>
-      {{#if logged_in}}
-        <p id="logout" class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
-      {{else}}
-        <p class="flex-1 ml-5 my-2 cursor-pointer" id="login">Login</p>
-      {{/if}}
+        {{#if logged_in}}
+          <p id="logout" class="flex-1 ml-5 my-2 cursor-pointer">Logout</p>
+        {{else}}
+          <p class="flex-1 ml-5 my-2 cursor-pointer" id="login">Login</p>
+        {{/if}}
       </div>
     </header>
     <main>
@@ -32,5 +32,7 @@
       <script src="/js/logout.js"></script>
     {{/if}}
     <script src="/js/header.js"></script>
+
+    <script src="/js/event.js"></script>
   </body>
 </html>

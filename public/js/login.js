@@ -12,6 +12,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      const userData = await response.json();
+      console.log(userData);
+      sessionStorage.setItem("user_id", userData.user_id);
       document.location.replace("/dashboard");
     } else {
       document.getElementById("loginError").classList.remove("hidden");
@@ -35,27 +38,27 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, email, password, name }),
     });
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace("/dashboard");
     }
   } catch (error) {
     console.error("Error during registration:", error);
   }
 };
 
-const login = document.getElementById("loginBtn");
-const signUp= document.getElementById("signUpBtn");
+const loginBtn = document.getElementById("loginBtn");
+const signUpBtn = document.getElementById("signUpBtn");
 
-if(login) {
-    const signUpPage = document.getElementById("signUp");
-    login.addEventListener("click", loginFormHandler);
-    signUpPage.addEventListener("click", () => {
-        document.location.replace("/signup");
-    })
+if (loginBtn) {
+  const signUpPage = document.getElementById("signUp");
+  loginBtn.addEventListener("click", loginFormHandler);
+  signUpPage.addEventListener("click", () => {
+    document.location.replace("/signup");
+  });
 };
-if(signUp){
-    const loginPage = document.getElementById("login")
-    signUp.addEventListener("click", signupFormHandler);
-    loginPage.addEventListener("click", () => {
-        document.location.replace("/");
-    })
+if (signUpBtn) {
+  const loginPage = document.getElementById("loginHere");
+  signUpBtn.addEventListener("click", signupFormHandler);
+  loginPage.addEventListener("click", () => {
+    document.location.replace("/");
+  });
 };
