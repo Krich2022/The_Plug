@@ -22,7 +22,7 @@ NPM:
 ![alt text](./Assets/Image/image.png)
 
 [The Plug](https://github.com/Krich2022/The_Plug)
-The Plug event planner offers a streamlined dashboard for users to explore upcoming events, seamlessly displaying event details in centered modals upon a simple click, enhancing the overall user experience.
+As a registered user, I want to effortlessly explore upcoming events on The Plug's dashboard, clicking on each event to view detailed information in a centered modal, providing a seamless and engaging experience.
 
 ## Credits
 Collaborators:
