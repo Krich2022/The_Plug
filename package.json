@@ -22,7 +22,8 @@
     "express-validator": "^7.0.1",
     "mysql2": "^2.2.5",
     "nodemon": "^3.0.2",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sib-api-v3-sdk": "^7.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.6"

@@ -1,6 +1,6 @@
+const pathArr = window.location.pathname.split("/");
+const eventId = pathArr[pathArr.length - 1];
 const getEvent = async () => {
-  const pathArr = window.location.pathname.split("/");
-  const eventId = pathArr[pathArr.length - 1];
   const event = await fetch(`/api/events/event-by-id/${eventId}`, {
     method: "GET",
   });
@@ -21,6 +21,7 @@ const getEvent = async () => {
   const [endDate, timeEnd] = eventData.event_end.split("T");
   const [startDate, timeStart] = eventData.event_start.split("T");
   document.getElementById("title").innerHTML = eventData.event_name;
+  document.getElementById("location").innerHTML = eventData.event_location;
   document.getElementById(
     "date&Time"
   ).innerHTML = `Start: ${startDate} End: ${endDate}`;
@@ -34,9 +35,40 @@ const getEvent = async () => {
 };
 
 const emailUsers = async () => {
-  const rsvp = await fetch(`/api/rsvp/users-by-event-id/${eventId}`, {
-    method: "GET",
-  });
+  try {
+    const event = await fetch(`/api/events/event-by-id/${eventId}`, {
+      method: "GET",
+    });
+    const rsvp = await fetch(`/api/rsvp/users-by-event-id/${eventId}`, {
+      method: "GET",
+    });
+
+    const rsvpData = await rsvp.json();
+    const eventData = await event.json();
+    const [endDate, timeEnd] = eventData.event_end.split("T");
+    const [startDate, timeStart] = eventData.event_start.split("T");
+
+    const emailEvent = await fetch("/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "",
+        eventName: eventData.event_name,
+        eventStart: startDate,
+        eventEnd: endDate,
+        eventUrl: window.location.pathname,
+      }),
+    });
+    if (emailEvent.ok) {
+      console.log("Message Sent");
+    } else {
+      console.error("Error triggering email campaign:", emailEvent.statusText);
+    }
+  } catch (error) {
+    console.error("An unexpected error occurred:", error);
+  }
 };
 
 getEvent();
