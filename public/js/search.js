@@ -1,22 +1,33 @@
-// need event listener for click event for search and filter.
-// needs to read text from input field, needs to query the database with whatever text is in the name. put that into a list called searchEvents which we are pulling
-// then rebuild the page with the searchEvents 
-const search= require ("../models/Events.js");
-const {Op}= require("sequilize");
-var searchVar= document.getElementById('searchButton');
-var inputVar= document.getElementById('inputField');
+var searchVar = document.getElementById("searchButton");
+var inputVar = document.getElementById("inputField");
 
 searchVar.addEventListener("click", searchClick);
 
-function searchClick(){   
-    var searchText= inputVar.value;
-    var searchEvent= 
-    search.findAll({
-        where: {
-            [Op.like]: searchText
-        }
-    })
-    
+function showEvent(e) {
+  window.location.href = `/event/${e}`;
 }
-// biggest question how do I link the variable in the javascript to the variable in the handlebar file, basically how does this go into the handlebar file.
-// What happens when we click filter? 
+
+function searchClick() {
+  var searchText = inputVar.value;
+  console.log(searchText, "Search");
+  fetch(`/api/search/${searchText}`)
+    .then((response) => response.json())
+    .then((results) => {
+      console.log(results);
+      for (let i = 0; i < results.length; i++) {
+        const eventObj = results[i];
+        const [endDate, timeEnd] = eventObj.event_end.split("T");
+        const [startDate, timeStart] = eventObj.event_start.split("T");
+        const eventHtml = `<div onclick="showEvent(${eventObj.id})" class="bg-gray-200 p-4 rounded cursor-pointer">
+                        <h2>${eventObj.event_name}</h2>
+                        <p id="desc">${eventObj.event_desc}</p>
+                        <p>Start: ${startDate} End: ${endDate}</p>
+                    </div>`;
+        const element = (document.getElementById("searchContainer").innerHTML +=
+          eventHtml);
+      }
+    })
+    .catch((error) => {
+      console.log("Err", error);
+    });
+}
