@@ -14,7 +14,7 @@ The Plug event planner offers a streamlined dashboard for users to explore upcom
 
 NPM:
 [sequelize](https://www.npmjs.com/package/sequelize)
-[The Plug](https://www.npmjs.com/package/@event-calendar/list)
+[@event-calendar/list](https://www.npmjs.com/package/@event-calendar/list)
 [calendar-js](https://www.npmjs.com/package/calendar-js)
 
 ## Usage
