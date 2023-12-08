@@ -23,7 +23,7 @@ const getEvent = async () => {
       "emailContainer"
     ).innerHTML = `<button id="rsvpToEvent" class="boxbg rounded-corners m-2 p-10 object-fill">RSVP to Event</button>`;
     const submitEmail = document.getElementById("rsvpToEvent");
-    submitEmail.addEventListener("click", rsvpEvent);
+    submitEmail.addEventListener("click", rsvpToEvent);
   }
 
   const [endDate, timeEnd] = eventData.event_end.split("T");
