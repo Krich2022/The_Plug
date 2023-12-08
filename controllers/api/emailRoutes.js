@@ -23,8 +23,7 @@ router.post("/", async (req, res) => {
     emailCampaigns.htmlContent = `This is a reminder for ${eventName}, the event begins at ${eventStart} and ends at ${eventEnd}. If you have any questions, please visit the event page at ${eventUrl}<br><br>-The Plug`;
 
     emailCampaigns.recipients = {
-      listIds: 2,
-      emailAddresses: emails,
+      listIds: [2],
     };
 
     await apiInstance.createEmailCampaign(emailCampaigns);
