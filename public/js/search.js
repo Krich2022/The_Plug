@@ -22,7 +22,6 @@ function searchClick() {
                         <h2>${eventObj.event_name}</h2>
                         <p id="desc">${eventObj.event_desc}</p>
                         <p>Start: ${startDate} End: ${endDate}</p>
-                        <p>Your event</p>
                     </div>`;
         const element = (document.getElementById("searchContainer").innerHTML +=
           eventHtml);
