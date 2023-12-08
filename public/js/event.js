@@ -10,11 +10,13 @@ const getEvent = async () => {
   const eventData = await event.json();
   const rsvpData = await rsvp.json();
   const currentUserId = sessionStorage.getItem("user_id");
-  if (eventData.created_by === currentUserId) {
+  console.log(eventData.created_by);
+  console.log(currentUserId);
+  if (eventData.created_by == currentUserId) {
     document.getElementById(
       "emailContainer"
-    ).innerHTML = `<button id="emailRsvp">Email RSVP</button>`;
-    const submitEmail = document.getElementById("emailRSVP");
+    ).innerHTML = `<button id="emailRsvp" class="boxbg rounded-corners m-2 p-10 object-fill">Email RSVP</button>`;
+    const submitEmail = document.getElementById("emailRsvp");
     submitEmail.addEventListener("click", emailUsers);
   }
 
