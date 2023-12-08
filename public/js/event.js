@@ -18,6 +18,12 @@ const getEvent = async () => {
     ).innerHTML = `<button id="emailRsvp" class="boxbg rounded-corners m-2 p-10 object-fill">Email RSVP</button>`;
     const submitEmail = document.getElementById("emailRsvp");
     submitEmail.addEventListener("click", emailUsers);
+  } else {
+    document.getElementById(
+      "emailContainer"
+    ).innerHTML = `<button id="rsvpToEvent" class="boxbg rounded-corners m-2 p-10 object-fill">RSVP to Event</button>`;
+    const submitEmail = document.getElementById("rsvpToEvent");
+    submitEmail.addEventListener("click", rsvpEvent);
   }
 
   const [endDate, timeEnd] = eventData.event_end.split("T");
@@ -70,6 +76,22 @@ const emailUsers = async () => {
     }
   } catch (error) {
     console.error("An unexpected error occurred:", error);
+  }
+};
+
+const rsvpToEvent = async () => {
+  try {
+    const response = await fetch(`/api/rsvp/${eventId}`, {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      console.log("RSVP successful");
+    } else {
+      console.error("RSVP failed");
+    }
+  } catch (error) {
+    console.error("Error during RSVP:", error);
   }
 };
 
