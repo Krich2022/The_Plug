@@ -61,7 +61,7 @@ router.get("/search", async (req, res) => {
 
 router.get("/create", async (req, res) => {
   try {
-    res.render("eventform", {
+    res.render("eventForm", {
       logged_in: req.session.logged_in,
       createEvent: true,
     });
