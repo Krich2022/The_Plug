@@ -31,6 +31,8 @@ const getAllEvent = async () => {
 
   for (i = 0; i < eventData.length; i++) {
     const eventObj = eventData[i];
+    const [endDate, timeEnd] = eventObj.event_end.split("T");
+    const [startDate, timeStart] = eventObj.event_start.split("T");
     const eventHtml = `<div
           class="bg-gray-200 p-4 rounded cursor-pointer"
           onclick="showEvent(${eventObj.id})"
