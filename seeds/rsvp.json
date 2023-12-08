@@ -62,5 +62,13 @@
   {
     "user_id": 1,
     "event_id": 3
+  },
+  {
+    "user_id": 11,
+    "event_id": 2
+  },
+  {
+    "user_id": 11,
+    "event_id": 3
   }
 ]
