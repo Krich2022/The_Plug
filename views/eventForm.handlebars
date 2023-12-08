@@ -1,13 +1,20 @@
-{{#if errors}}
-  <ul>
-    {{#each errors}}
-      <li>{{this.msg}}</li>
-    {{/each}}
-  </ul>
-{{/if}}
-{{! This is the input form }}
-<form class="bg-gray-100 p-6 rounded-md">
-  <label for="eventName" class="block text-gray-700">Event Name:</label>
+
+
+
+
+
+<div class="flex justify-center items-center h-screen">
+  <div class="max-w-md w-full bg-gray-100 p-6 rounded-md">
+    {{#if errors}}
+      <ul class="mb-4">
+        {{#each errors}}
+          <li>{{this.msg}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+
+    <form>
+        <label for="eventName" class="block text-gray-700">Event Name:</label>
   <input
     type="text"
     id="eventName"
@@ -54,5 +61,6 @@
     id="eventSubmit"
     class="px-4 py-2 bg-blue-200 text-gray-700 rounded-md cursor-pointer hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
   >Create Event</button>
-
-</form>
+    </form>
+  </div>
+</div>
