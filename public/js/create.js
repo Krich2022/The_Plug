@@ -16,10 +16,10 @@ const createEvent = async (
     method: "POST",
     body: JSON.stringify({
       event_name: event,
-      event_start: eventStart,
-      event_end: eventEnd,
+      event_start: new Date(eventStart),
+      event_end: new Date(eventEnd),
       event_location: eventLocation,
-      event_descrription: description,
+      event_desc: description,
     }),
     headers: { "Content-Type": "application/json" },
   });

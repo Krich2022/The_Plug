@@ -10,12 +10,20 @@ const getEvent = async () => {
   const eventData = await event.json();
   const rsvpData = await rsvp.json();
   const currentUserId = sessionStorage.getItem("user_id");
-  if (eventData.created_by === currentUserId) {
+  console.log(eventData.created_by);
+  console.log(currentUserId);
+  if (eventData.created_by == currentUserId) {
     document.getElementById(
       "emailContainer"
-    ).innerHTML = `<button id="emailRsvp">Email RSVP</button>`;
-    const submitEmail = document.getElementById("emailRSVP");
+    ).innerHTML = `<button id="emailRsvp" class="boxbg rounded-corners m-2 p-10 object-fill">Email RSVP</button>`;
+    const submitEmail = document.getElementById("emailRsvp");
     submitEmail.addEventListener("click", emailUsers);
+  } else {
+    document.getElementById(
+      "emailContainer"
+    ).innerHTML = `<button id="rsvpToEvent" class="boxbg rounded-corners m-2 p-10 object-fill">RSVP to Event</button>`;
+    const submitEmail = document.getElementById("rsvpToEvent");
+    submitEmail.addEventListener("click", rsvpToEvent);
   }
 
   const [endDate, timeEnd] = eventData.event_end.split("T");
@@ -68,6 +76,22 @@ const emailUsers = async () => {
     }
   } catch (error) {
     console.error("An unexpected error occurred:", error);
+  }
+};
+
+const rsvpToEvent = async () => {
+  try {
+    const response = await fetch(`/api/rsvp/${eventId}`, {
+      method: "POST",
+    });
+
+    if (response.ok) {
+      console.log("RSVP successful");
+    } else {
+      console.error("RSVP failed");
+    }
+  } catch (error) {
+    console.error("Error during RSVP:", error);
   }
 };
 
